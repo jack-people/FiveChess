@@ -13,24 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fivechess"
         android:debuggable="false"
-        tools:ignore="ExtraText,HardcodedDebugMode"> <!-- 禁用调试标志 -->
+        tools:ignore="ExtraText,HardcodedDebugMode">
         tools:targetApi="31">
-        <activity android:name=".SecActivity"></activity>
-        <activity android:name=".FightActivity" />
-        <activity
-            android:name=".LeaderboardActivity"
-            android:label="Leaderboard"
-            android:exported="true">
-        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".LeaderboardActivity"/>
+        <activity android:name=".SecActivity"/>
+        <activity android:name=".FightActivity"/>
+
     </application>
 
 </manifest>

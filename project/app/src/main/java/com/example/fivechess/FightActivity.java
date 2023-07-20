@@ -2,9 +2,7 @@ package com.example.fivechess;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -17,30 +15,28 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.example.fivechess.GameLogic;
 
 public class FightActivity extends Activity implements OnClickListener {
     private static final String TAG = "FightActivity";
-    GameView mGameView = null;
-    Game mGame;
-    Player me;
-    Player computer;
-    ComputerAI ai;
-    //victory
+    private GameLogic gameLogic;
+    /*GameLogic mGame,me,computer,ai;*/
+    private GameView mGameView = null;
+    private Game mGame;
+    private Player me;
+    private Player computer;
+    private ComputerAI ai;
     private TextView mBlackWin;
     private TextView mWhiteWin;
     private ImageView mBlackActive;
     private ImageView mWhiteActive;
     private TextView mBlackName;
     private TextView mWhiteName;
-    // Control Button
     private Button restart;
     private Button rollback;
     private Button setting;
     private Button about;
     private boolean isRollback;
-    /**
-     * Process game callback information and refresh the interface
-     */
     private Handler mComputerHandler ;
     private long mStartTime;
 
@@ -126,6 +122,21 @@ public class FightActivity extends Activity implements OnClickListener {
         about.setOnClickListener(this);
     }
 
+    /*private void initGame() {
+        String myselfName = getString(R.string.myself);
+        String computerName = getString(R.string.computer);
+        me = new Player(myselfName, Game.BLACK);
+        computer = new Player(computerName, Game.WHITE);
+
+        mGame = new Game(mRefreshHandler, me, computer);
+        mGame.setMode(GameConstants.MODE_SINGLE);
+        mGameView.setGame(mGame);
+
+        updateActive(mGame);
+        updateScore(me, computer);
+
+        ai = new ComputerAI(mGame.getWidth(), mGame.getHeight());
+    }*/
     private void initGame(){
         me = new Player(getString(R.string.myself),Game.BLACK);
         computer = new Player(getString(R.string.computer),Game.WHITE);
@@ -226,5 +237,9 @@ public class FightActivity extends Activity implements OnClickListener {
                 isRollback = false;
             }
         }
+    }
+
+    public void startFight() {
+        Log.d(TAG, "Start fighting...");
     }
 }

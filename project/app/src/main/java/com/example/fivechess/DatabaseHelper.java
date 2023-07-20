@@ -19,7 +19,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTableQuery = "CREATE TABLE time (" +
                 "start_time INTEGER, " +
-                "end_time INTEGER)";
+                "end_time INTEGER, " +
+                "game_duration INTEGER)";
         db.execSQL(createTableQuery);
     }
 

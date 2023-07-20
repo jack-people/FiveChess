@@ -58,7 +58,6 @@ public class LeaderboardActivity extends AppCompatActivity {
             duration = formatGameDuration(gameDurationInMilliseconds);
             cursor.close();
         }
-
         return duration;
     }
 
